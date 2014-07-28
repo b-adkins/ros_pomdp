@@ -1,0 +1,8 @@
+<launch>
+  <arg name="namespace" value="dialogue" />
+  <param name="$(arg namespace)/cfg_root" value="$(find pomdp_node)/test/" />
+  <rosparam command="load" ns="$(arg namespace)"
+    file="$(find pomdp_node)/test/dialogue_tiger/dialogue_cfg.yaml" /> 
+  <node name="dialogue_irl_tiger" ns="$(arg namespace)" pkg="pomdp_node" type="dialogue_irl" 
+    output="screen" />
+</launch>

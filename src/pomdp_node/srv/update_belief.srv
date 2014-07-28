@@ -1,0 +1,5 @@
+string name
+int32 action
+int32 observation
+---
+float64[] belief_new

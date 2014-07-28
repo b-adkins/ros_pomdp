@@ -1,0 +1,4 @@
+string name
+int32 state_cur
+---
+int32 action

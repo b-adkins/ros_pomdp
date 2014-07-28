@@ -1,0 +1,5 @@
+int32 observation
+string[] oracle_phrase
+---
+model_outputs model_states
+int32 oracle_action

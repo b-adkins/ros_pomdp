@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>pomdp</name>
+  <version>0.0.0</version>
+  <description>The pomdp package</description>
+
+  <maintainer email="badkins@usc.edu">Bea Adkins</maintainer>
+  <license>TODO</license>
+  <author  email="badkins@usc.edu">Bea Adkins</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>yaml-cpp</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>yaml-cpp</run_depend>
+  <test_depend>rostest</test_depend>
+
+  <export>
+    <rosdoc config="doc/rosdoc.yaml" />
+    <python path="${prefix}/src/pomdp" />
+  </export>
+</package>

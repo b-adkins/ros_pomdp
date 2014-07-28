@@ -1,0 +1,7 @@
+<!-- A fast policy for an empty 4x3 MDP -->
+<launch>
+  <node name="pomdp_run" pkg="pomdp_node" type="pomdp_run"
+    args="$(find pomdp_node)/test/4x3.empty_mdp -p $(find pomdp_node)/test/4x3_fast.mdp_policy" />
+  <test test-name="top_route" pkg="pomdp_node" time-limit="5.0" type="test_pomdp_run.py"
+    args="7 0 4 0 0 2 1 2 2 2" />
+</launch>

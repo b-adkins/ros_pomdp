@@ -1,0 +1,12 @@
+<!-- Test MDP using CompoundStateSpace. -->
+<launch>
+  <param name="state_space_path" value="$(find pomdp_node)/test/4x4_ss.yaml" />
+  <node name="pomdp_run" pkg="pomdp_node" type="pomdp_run"
+    args="$(find pomdp_node)/test/4x4.empty_mdp -p $(find pomdp_node)/test/4x4.map_policy" />
+  <test test-name="north_east_wall" pkg="pomdp_node" time-limit="2.5" type="test_pomdp_run.py" 
+    args="0 2 5 0 6 2 7 1 11 1" />
+<!--        E   N   E   S    S-->
+  <test test-name="west_south_wall" pkg="pomdp_node" time-limit="3" type="test_pomdp_run.py" 
+    args="0 2 4 1 9 3 8 1 12 2 13 2 10 1 14 2" />
+<!--        E   S   W   S    E    E    S    E-->
+</launch>

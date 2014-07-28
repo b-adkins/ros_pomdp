@@ -1,0 +1,17 @@
+/**
+@mainpage POMDP
+
+@section intro Introduction
+
+C++ library for POMDPs, making it easy to use them for decision making, tracking, and online learning. It (will) enable the implementation of complex POMDPs using nothing more than model configuration files.
+
+It builds upon A. Cassandra's pomdp-solve C libraries.
+
+
+@section internal_links Internal Links
+- \link feature_space Feature Spaces \endlink
+
+@section external_links External Links
+- <a href="http://www.cassandra.org/pomdp/">Anthony Cassandra's POMDP solver.</a>
+
+*/

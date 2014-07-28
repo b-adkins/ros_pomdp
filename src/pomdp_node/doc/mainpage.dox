@@ -1,0 +1,8 @@
+/**
+ @mainpage POMDP Node
+
+ @section intro Introduction
+
+C++ library containing nodes, messages/services, and other infrastructure for using the POMDP library with ROS.
+
+*/

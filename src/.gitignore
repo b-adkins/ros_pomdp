@@ -1,0 +1,5 @@
+# Catkin generated
+/CMakeLists.txt
+
+# Ignore doc in these folders (it contains not generated documentation but files to *generate* documentation)
+!doc

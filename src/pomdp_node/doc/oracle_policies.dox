@@ -1,0 +1,111 @@
+/**
+@page oracle_policies Oracle Policies
+@section intro Introduction
+In the Oracle Policy family of policies, an autonomous agent, following a (PO)MDP policy, also listens for orders from a superior (the titular oracle), and defers to him/her/it over its own policy. Though mathematically equivalent to a regular (PO)MDP, oracle (PO)MDPs have special features that can be automatically handled; thus special classes are provided to make them easier to implement.
+
+@section simple Simple Representation
+For the simplest case, where the robot obeys unconditionally, the world state is irrelevant to its policy when receiving an order. Thus, what order was given (an action) is the only necessary state, and that an order was given is implied by being in an order state.
+
+@subsection fs Feature Spaces
+This can be mathematically represented as a (PO)MDP with additional states, one for each action:
+\f[ S' = S \cup S_o = S \cup A \f]
+\f$ S' \f$ - combined state space <br/>
+\f$ S  \f$ - original state space <br/>
+\f$ S_o = A  \f$ - oracle state space, same as (PO)MDP action space
+
+Or in POMDP's YAML format:
+@code
+action_space:
+    name: mdp_actions
+    values: [action_1, action_2, ..., action_m]
+
+# Original state space
+state_space:
+    name: mdp_states
+    values: [state_1, state_2, ... , state_n]
+@endcode @code
+# Combined state space
+state_space:
+    name: oracle_mdp_states
+    values: [state_1, state_2, ... , state_n, action_1, action_2, ..., action_m]
+@endcode
+
+The combined state space can be generated automatically, so an Oracle Policy can be created for an existing (PO)MDPwithout modifying its feature space config file.
+
+@subsection policy Policy
+The new policy can be represented as:
+\f[ \Pi' = \Pi \cup \Pi_a \f]
+\f[ \Pi : s \rightarrow a \f]
+\f[ \Pi_a : s_o \rightarrow a = a \rightarrow a \f]
+\f$ \Pi'  \f$ - combined (PO)MDPpolicy <br/>
+\f$ \Pi   \f$  - original (PO)MDPpolicy <br/>
+\f$ \Pi_a \f$ - oracle policy
+
+Or in POMDP's MDP_policy format:
+@code
+# Original policy:
+some_action  # state_1
+some_action  # state_2
+.            # .
+.            # .
+.            # .
+some_action  # state_n-1
+some_action  # state_n
+
+# Oracle policy for additional states:
+action_1       # human_said_action_1
+action_2       # human_said_action_2
+.              # .
+.              # .
+.              # .
+action_m       # human_said_action_m
+@endcode
+
+Adding the oracle order to action mappings can also be done automatically without need to modify the original policy config file.
+
+@subsection state_det State Determination
+State determination must now, in addition to determining the (PO)MDP state, receive orders and determine whether they are in effect. An example follows:
+
+\f[
+   mode = \left\{
+     \begin{array}{ll}
+       obey       & : \exists command \\
+       autonomous & : timeout \vee command\_failed \vee command\_complete \vee ordered = \_autonomous
+     \end{array}
+   \right. \f]
+
+When mode is "obey", the state output is the action ordered. When mode is "autonomous", the state output is the (PO)MDP state.
+
+@subsection go_autonomous "Go autonomous" Order
+Although "wait" (for further instruction) neatly falls into the existing set of orders and actions, the order to "go autonomous"/"do your own thing" is a special case. 
+
+@subsection considerations Considerations
+- Some decisions (how long to follow orders, when to give up) are moved outside of the (PO)MDP
+
+@section hierarchical Hierarchical Representation
+This can be represented as a hierarchical state space.
+@code
+state_space:
+    name: oracle_state
+    values: 
+      - name: autonomous
+        values: [state_1, state_2, ... , state_n]
+      - name: obey
+        values: [action_1, action_2, ..., action_m]
+@endcode
+
+Example states:
+@code
+oracle_state: [autonomous, state_2]
+oracle_state: [obey, action_1]
+@endcode
+
+This too can be generated. In this variation, the (PO)MDP keeps track of both its own state and the order received.
+
+Some cases in which this would be useful:
+- Allows a POMDP to be used to help determine whether to be autonomous or obey an order
+- MDP for autonomous mode, POMDP for obey mode or vis versa
+- Agent uses its state estimate to resolve uncertainty in the order
+- Agent uses its state estimate to anticipate when a order is impossible or inadvisable (e.g. where such orders would conflict with the <a href=http://www.auburn.edu/~vestmon/robotics.html>First Law</a>)
+
+*/

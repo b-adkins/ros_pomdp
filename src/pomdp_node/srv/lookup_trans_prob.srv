@@ -1,0 +1,6 @@
+string name
+int32 state_old
+int32 state_new
+int32 action
+---
+float64 prob

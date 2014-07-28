@@ -1,0 +1,10 @@
+# Opens either door if P(tiger < 0.05)
+1
+-95 5
+
+0
+0 0
+
+2
+5 -95
+

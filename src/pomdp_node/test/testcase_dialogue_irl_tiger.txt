@@ -1,0 +1,12 @@
+# obs       oracle                  model likelihood                               actions                 
+#           phrase                                                                         
+#                       reckless  impatient cautious  +cautious     reckless  impatient cautious  +cautious 
+# Initial actions should be:                                             0         0         0         0
+  1     listen,for,tiger     0.017     0.328     0.328     0.328         1         0         0         0
+  0         listen           0.017     0.328     0.328     0.328         0         0         0         0
+  0         listen           0.001     0.333     0.333     0.333         2         0         0         0
+  0         listen               0     0.026     0.487     0.487         2         2         0         0
+  1         listen               0     0.026     0.487     0.487         2         0         0         0
+  0         listen               0     0.001     0.499     0.499         2         2         0         0
+  0         listen               0         0      0.05      0.95         2         2         2         0
+  0        open,right            0         0      0.05      0.95         2         2         2         2

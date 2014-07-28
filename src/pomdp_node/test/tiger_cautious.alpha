@@ -1,0 +1,10 @@
+# Opens either door if P(tiger < 0.01)
+open-left
+-99 1
+
+listen
+0 0
+
+open-right
+1 -99
+

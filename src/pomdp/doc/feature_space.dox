@@ -1,0 +1,77 @@
+/**
+@page feature_space Feature Spaces
+@section intro Introduction
+Feature spaces are a key feature of POMDP. They are a convenient way to specify and communicate the valid states, actions, and observations of a POMDP. They centralize performing sanity checks - on configuration data at loading time, on messages when received. 
+
+Feature spaces (will) make it easy to create POMDPs with factored and hierarchal features, including factored feature representation.
+
+Feature spaces make logging and debugging easier by the option of assigning names to states.
+
+Feature spaces are meant to be shared with other ROS nodes (through the param server) so they can also take advantage of these benefits.
+
+@section yaml YAML Format
+The following lightweight format makes it easy to specify feature spaces. 
+
+The simplest possible feature space:
+@code
+action_space:
+    values: stop go
+@endcode
+
+
+
+A complex example, illustrating the hierarchical potential of feature spaces and the various primitive types:
+@code
+# Vector feature space
+pixel_space: 
+# Discrete feature space, named
+  - name: color
+    values: [ red, blue, green, yellow, purple ]
+  # Continuous feature space 
+  - name: intensity
+    values: [-10.2, 124.4]
+  # Vector feature space 
+  - name: coordinates
+    values:
+        # Discrete feature space, unnamed
+        - name: x
+          values: 9
+        # Discrete feature space, unnamed
+        - name: y
+          values: 12
+@endcode
+
+@subsection name Name
+The 'name' key is a string describing the feature space.
+
+@subsection values Values
+The 'value' key can be: 
+
+<table>
+<tr><th> Data Type       </th><th>Meaning         </th><th>Feature space type</th></tr>
+<tr><td> One integer     </td><td>Number of values</td><td>Discrete  </td></tr>
+<tr><td> Two+ strings    </td><td>Name list       </td><td>Discrete  </td></tr>
+<tr><td> Two numbers     </td><td>Numeric range   </td><td>Continuous </td></tr>
+<tr><td> YAML node vector</td><td>Nested feature space(s)</td><td>Vector </td></tr>
+</table>
+
+@section types Feature Space Types
+@subsection fs_discrete Discrete Feature Space
+The simplest feature space. At its most basic, it is a range of non-negative integers. To be more human-readable, this range can be mapped to a list of names.
+
+@subsection fs_continuous Continuous Feature Space
+A decimal range of real numbers. To be implemented.
+
+@subsection fs_vector Vector Feature Space
+A feature space composed of other feature spaces. If all states within are discrete, can represent the compound state as a single integer.
+
+@section usage Usage
+Due to the limitations of Cassandra's POMDP library, simple feature spaces (either a list of names or a number of states) are read directly from .POMDP files and pushed to the param server. More complex feature spaces are first pushed onto the param server and are then used to initialize the POMDP.
+
+
+@section internal_links Internal Links
+- @link pomdp::FeatureSpace FeatureSpace C++ Class @endlink
+- @link pomdp::SimpleFeatureSpace SimpleFeatureSpace C++ Class @endlink
+- @link pomdp::VectorFeatureSpace VectorFeatureSpace C++ Class @endlink
+
+*/

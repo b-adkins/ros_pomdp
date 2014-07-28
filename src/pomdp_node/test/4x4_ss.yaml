@@ -1,0 +1,17 @@
+##
+# For 4x4.empty_mdp. Splits the existing 4x4 test case into X and Y.
+#
+#         x
+#     0  1  2  3
+#    +-----------+
+#  0 | 0  1  2  3|
+#y 1 | 4  5  6  7|
+#  2 | 8  9 10 11|
+#  3 |12 13 14 15|
+#    +-----------+
+#
+state_space:
+  - name: x
+    values: 4
+  - name: y
+    values: 4

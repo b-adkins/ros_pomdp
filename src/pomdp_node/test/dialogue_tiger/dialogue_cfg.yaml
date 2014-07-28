@@ -1,0 +1,15 @@
+# Parameter '[namespace]/cfg_root' must be set in a launch file so node can find these files!
+
+# Model config files. Index corresponds to model number.
+pomdp_paths: ['tiger.POMDP']
+policy_paths: ['tiger_compound.mn_pomdp_policy']
+
+# Bag of words config files. Index corresponds to action number.
+bag_paths: ['dialogue_tiger/a0_listen.txt', 'dialogue_tiger/a1_open-left.txt', 'dialogue_tiger/a2_open-right.txt']
+
+
+# Bag of words config files mapped to actions (as named in POMDP file)
+#action_to_words: 
+#  listen: 'dialogue_tiger/a0_listen.txt'
+#  open-left: 'dialogue_tiger/a1_open-left.txt'
+#  open-right: 'dialogue_tiger/a2_open-right.txt'

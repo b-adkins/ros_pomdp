@@ -1,0 +1,4 @@
+ - builder: doxygen
+   name: ROS POMDP Library
+   output_dir: pomdp
+   file_patterns: '*.c *.cpp *.h *.cc *.hh *.py *.dox'

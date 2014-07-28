@@ -1,0 +1,5 @@
+int32 observation
+int32 oracle_action
+---
+float64[] model_likelihoods
+int32[] model_actions

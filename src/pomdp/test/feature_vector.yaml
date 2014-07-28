@@ -1,0 +1,22 @@
+#
+# Do not move or change this file. Will break test_feature_vector!
+#
+feature_space:
+  - name: visible
+    values: [ true, false ]
+  - name: color
+    values: [ red, blue, green, yellow, purple ]
+  - name: x
+    values: 9
+  - name: y
+    values: 9
+
+#
+# Preferred, less redundant format. Unable to read using poorly-documented YAML API.
+#
+#features:
+#  - visible: [ true, false ]
+#  - color: [ red, blue, green, yellow, purple ]
+#  - x: 9
+#  - y: 9
+#
