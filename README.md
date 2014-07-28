@@ -15,7 +15,6 @@ Throughout this document, ```[WORKSPACE_ROOT]``` is used for the root directory 
 | :--------------| :-------------------------------------------------------------------------------------|
 |pomdp           | C++ classes implementing and using POMDPs.                                            |
 |pomdp_node      | ROS nodes and using POMDPs.                                                           |
-|collab_pomdp    | Launch files and bridge code for the Collaboration project at USC's Interaction Lab.  |
 |                |                                                                                       |
 |pomdp_reasoning | (TODO) Reasoning and learning using POMDPs.                                           |
 
@@ -48,7 +47,6 @@ ros_pomdp uses Doxygen run through rosdoc_lite to automatically build its docume
 
     $ rosdoc_lite src/pomdp
     $ rosdoc_lite src/pomdp_node
-    $ rosdoc_lite src/collab_pomdp
 
 Documentation will be generated under ```[WORKSPACE_ROOT]/doc```. The following index files provide good starting places:
 
@@ -64,7 +62,6 @@ Index of package APIs.
 
 -   ```[WORKSPACE_ROOT]/doc/html/pomdp/index.html```
 -   ```[WORKSPACE_ROOT]/doc/html/pomdp_node/index.html```
--   ```[WORKSPACE_ROOT]/doc/html/collab_pomdp/index.html```
 
 ## Unit Test Instructions
 Compile tests with (from ```[WORKSPACE_ROOT]```):
