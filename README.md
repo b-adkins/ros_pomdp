@@ -12,17 +12,19 @@ Package containing ROS nodes and library(ies) to facilitate the use and developm
 Throughout this document, ```[WORKSPACE_ROOT]``` is used for the root directory of the catkin workspace.
 
 ## Index of packages
-| :--------------| :-------------------------------------------------------------------------------------|
-|pomdp           | C++ classes implementing and using POMDPs.                                            |
-|pomdp_node      | ROS nodes and using POMDPs.                                                           |
-|                |                                                                                       |
-|pomdp_reasoning | (TODO) Reasoning and learning using POMDPs.                                           |
+|                |                                             |
+| :------------- | :------------------------------------------ |
+|pomdp           | C++ classes implementing and using POMDPs.  |
+|pomdp_node      | ROS nodes and using POMDPs.                 |
+|                |                                             |
+|pomdp_reasoning | (TODO) Reasoning and learning using POMDPs. |
 
 ## Index of nodes (in pomdp_node)
-| :-----------| :---------------------------------------------------------------------|
-|pomdp_run    | For running a single POMDP.                                           |
-|oracle_irl   | Inverse reinforcement learning of policy using human oracle           |
-|dialogue_irl | Inverse reinforcement learning of policy using dialogue system output |
+|             |                                                                        |
+| :---------- | :--------------------------------------------------------------------- |
+|pomdp_run    | For running a single POMDP.                                            |
+|oracle_irl   | Inverse reinforcement learning of policy using human oracle.           |
+|dialogue_irl | Inverse reinforcement learning of policy using dialogue system output. |
 
 ## Compile Instructions
 A copy of A. Cassandra's pomdp-solve is required. This software was developed using version 5.3. A copy of libmdp must be compiled from the source. Download and documentation at: http://www.pomdp.org/code/index.shtml .
